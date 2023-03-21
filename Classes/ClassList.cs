@@ -15,7 +15,7 @@ namespace ClassList
         /// <returns></returns>
         public static string[] CreateFromKeyboard(int length)
         {
-            Console.WriteLine($"Создание строчного массива с кличеством элементов {length}");
+            Console.WriteLine($"Создание строчного массива с количеством элементов {length}");
             string[] matrix = new string[length];
             for (int i = 0; i < length; i++)
             {
@@ -26,19 +26,26 @@ namespace ClassList
             }
             return matrix;
         }
-        public static string[] CreateNewArray(string[] array, int length)
+
+        /// <summary>
+        /// Создание новго массива по заданным параметрам
+        /// </summary>
+        /// <param name="array">Исходный массив</param>
+        /// <param name="length">Длина слова для обработки элементов массива</param>
+        /// <returns></returns>
+        public static string[] CreateNewArray(string[] array, int lengthWord)
         {
             int count = 0;
             int countNew = 0;
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                if (array[i].Length <= 3) count++;
+                if (array[i].Length <= lengthWord) count++;
             }
             
             string[] arrayNew = new string[count];
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                if (array[i].Length <= 3)
+                if (array[i].Length <= lengthWord)
                 {
                     arrayNew[countNew] = array[i];
                     countNew++;
@@ -48,9 +55,10 @@ namespace ClassList
         }
 
         /// <summary>
-        /// Вывод в консоль строчного массива
+        /// Вывод строчного массива
         /// </summary>
-        /// <param name="array">Строчный массив для вывода</param>
+        /// <param name="array">Массив для вывода</param>
+        /// <param name="textOutput">Сопутствующий текст, выводится перед элементами массива</param>
         public static void PrintArray(string[] array, string textOutput) 
         {
             Console.Write($"{textOutput}");
